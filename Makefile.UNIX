@@ -1,0 +1,31 @@
+CC = g++
+FLAGS = -fhandle-exceptions -O2 -m486
+
+all:  emagic
+
+clean:
+	rm -f emagic *.o tables/tables.h _mktbl
+
+frequen.o : frequen.cpp frequen.h recode.h
+	$(CC) -c $(FLAGS) frequen.cpp
+
+recode.o : recode.cpp recode.h tables/tables.h
+	$(CC) -c $(FLAGS) recode.cpp
+
+emagic.o : emagic.cpp emagic.h recode.h frequen.h
+	$(CC) -c $(FLAGS) emagic.cpp
+
+emagic : frequen.o emagic.o recode.o
+	$(CC) $(FLAGS) -o emagic emagic.o frequen.o recode.o
+	strip -d emagic
+
+tables/tables.h : tables/*.tab _mktbl
+	cd tables && ../_mktbl *.tab && cd ..
+
+_mktbl:	_mktbl.cpp
+	$(CC) $(FLAGS) -o _mktbl _mktbl.cpp
+
+install: emagic emagic.1.gz
+	install -c -g bin -o bin -m 444 emagic.1.gz /usr/local/man/man1
+	install -c -g bin -o bin emagic /usr/local/bin
+

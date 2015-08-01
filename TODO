@@ -1,0 +1,5 @@
+TODO:
+	1. Handling of mailer-encoded text (Quoted-Printable and
+	MIME64 encodings) before processing.  Suggested by
+	Dmitry Elyashevich <dima@elyash.jewuni.spb.ru>
+	

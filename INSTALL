@@ -1,0 +1,25 @@
+To install Encoding Magic ver 1.0 follow these steps:
+
+1.  Rename either Makefile.DOS or Makefile.UNIX into Makefile (depending
+on the OS you are going to compile it on).
+
+2.  Edit Makefile.  In particular you might want to change compiler program
+    name and options.
+
+3.  If the encoding you want files to be converted to (you base encoding) is
+    koi8-r, do nothing.  Otherwise convert at least frequen.cpp file into
+    your base encoding.  For example, under DOS you will probably want to
+    apply koi8->alt conversion to file frequen.cpp.  You can use any recoding
+    software to do this, for example mpc or recode.
+
+4.  Run make.
+
+5.  Under UNIX run 'make install'.  Under DOS simply copy the resulting
+    emagic.exe file to a directory in your PATH statement.
+
+If you have any questions and/or comments contact the author at sg@mplik.ru
+I would not mind getting a note from you if you simply find this program
+useful.
+
+Best regards,
+Sergey Gershtein

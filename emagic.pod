@@ -1,0 +1,74 @@
+
+=head1 NAME
+
+B<emagic> - automatically convert Russian text into I<koi8-r>
+
+=head1 SYNOPSIS
+
+B<emagic> C<[-v|-q] [-n depth] [-o outfile] file1 file2 ...>
+B<emagic> C<-w>
+
+=head1 DESCRIPTION
+
+B<Encoding Magic Version 1.1> tries to determine encoding of given Russian
+text and convert it into base encoding of I<koi8-r>. It handles the cases
+of incorrect encodings (for example, when I<windows-1251> -> I<koi8-r>
+conversion was mistakenly applied to file in MSDOS cp866 encoding).
+
+The program tries all combinations of consequtive conversions between known
+encoding up to specified depth (2 by default) and uses a weight fuction based
+on character distribution and some frequent words to determine the correct
+one.
+
+The following encodings are known:
+
+=over 4
+
+=item * I<koi8-r> - UNIX koi8-r encoding
+
+=item * I<windows-1251> - Microsoft Windows(R) code page 1251
+
+=item * I<dos866> - MS-DOS(R) code page 866
+
+=item * I<iso8859-5> - ISO 8859-5 Cyrillic
+
+=back
+
+The I<ASCII> characters are not changed during all the conversions.
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-v> Produce verbose debug output to screen
+
+=item B<-q> Be quiet - no output to screen at all
+
+=item S<B<-n> depth> Try conversions up to I<depth> levels deep.
+
+=item S<B<-o> outname> Write all output to file I<outname>.
+If B<-o> is not specified, the input files are rewritten.
+
+=back
+
+
+
+
+=head1 COPYRIGHT
+
+Encoding Magic is copyright (c) 1997 by Sergey Gershtein.
+
+This is free software, and you are welcome to redistribute it
+under certain conditions; see file B<COPYING> in original package for details
+Feel free to send email to B<sg@mplik.ru> with your questions and comments
+You can get all the Encoding Magic source files from
+ftp://ftp.mplik.ru/pub/unix/utils/emagic_1.1.tgz
+
+=head1 BUGS
+
+The result of applying B<emagic> to non-Russian text is unpredictable.
+
+If parts of input file are in different encodings of Cyrillic the program
+gets confused and the output is again unpredictable.
+
+

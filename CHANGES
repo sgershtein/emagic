@@ -1,0 +1,25 @@
+Version 1.0.1.
+
+	Added support for Russian letters 'yo small' and 'yo capital'
+	(unicode characters 0451 and 0401 respectively). Thanks to
+	Leonid Pauzner <leonid@pauzner.mccme.ru> for pointing me
+	to correct recoding tables.
+
+Version 1.0.2.
+
+	Minor bug fixes and improvements. Thanks again to Leonid Pauzner.
+
+Version 1.1.
+
+	Fixed bugs introduced in version 1.0.1 that prevented emagic from
+	proper encoding recognition.
+
+	Added external conversion tables support.
+	
+	Added some more sophisticated euristics to improve encoding
+	recognition.
+
+	Iluminated inefective conversion sequences, for example
+	koi->iso, iso->win is the same as koi->win
+	
+
